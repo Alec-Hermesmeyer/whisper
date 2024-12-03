@@ -44,9 +44,10 @@ export function LegalAIAssistant() {
 
   const sendTextMessage = async (text: string) => {
     if (!text.trim()) return;
+  
     setConversation((prev) => [...prev, { role: 'user', content: text }]);
     setIsLoading(true);
-
+  
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -59,13 +60,13 @@ export function LegalAIAssistant() {
           ],
         }),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         console.error('Chat API Error:', errorData);
         throw new Error(errorData.error || 'Failed to fetch response');
       }
-
+  
       const botResponse = await response.json();
       if (botResponse?.text) {
         const formattedResponse = formatResponse(botResponse.text);
@@ -81,8 +82,10 @@ export function LegalAIAssistant() {
       ]);
     } finally {
       setIsLoading(false);
+      handleInputChange({ target: { value: '' } }); // Clear the input field
     }
   };
+  
 
   return (
     <div className="grid grid-cols-1 gap-6 p-8 max-w-3xl mx-auto">
