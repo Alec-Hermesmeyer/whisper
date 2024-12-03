@@ -2,7 +2,7 @@
 import { pipeline } from '@xenova/transformers';
 
 let whisperPipeline: any = null;
-let toxicityModel: any = null;
+
 
 export const loadModels = async () => {
   try {
@@ -20,4 +20,4 @@ export const loadModels = async () => {
 };
 
 export const getWhisperPipeline = () => whisperPipeline;
-export const getToxicityModel = () => toxicityModel;
+
