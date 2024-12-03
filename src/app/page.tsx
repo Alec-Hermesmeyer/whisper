@@ -1,5 +1,4 @@
 import { LegalAIAssistant } from '@/components/legal-ai-assistant'
-import {ModelProvider} from '@/context/modelContext'
 
 export default function LegalAIAssistantPage() {
   return (

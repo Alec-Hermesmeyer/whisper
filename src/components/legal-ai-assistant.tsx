@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useChatWithVoice } from '@/hooks/useChatWithVoice';
 import { Send, Mic, StopCircle } from 'lucide-react';
-import { CheckCircle } from 'lucide-react';
+
 
 type Message = {
   role: 'user' | 'assistant';

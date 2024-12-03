@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import { execSync } from 'child_process';
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
