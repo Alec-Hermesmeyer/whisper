@@ -1,6 +1,5 @@
 "use client";
-import React, { createContext, useState, useEffect, useContext, useRef } from 'react';
-import * as tf from '@tensorflow/tfjs';
+import React, { createContext, useState, useContext } from 'react';
 
 interface ModelContextType {
   isLoading: boolean;
@@ -18,30 +17,9 @@ export const ModelProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [error, setError] = useState<string | null>(null);
   const [whisperPipeline, setWhisperPipeline] = useState<any>(null);
   const [toxicityModel, setToxicityModel] = useState<any>(null);
-  const [detectedCommand, setDetectedCommand] = useState('');
-  const recognizerRef = useRef<any>(null);
-  const speechCommands = require('@tensorflow-models/speech-commands');
+  
 
-  useEffect(() => {
-    const loadModel = async () => {
-      try {
-        // Ensure TensorFlow.js is ready
-        await tf.ready();
-
-        // Create a recognizer
-        const recognizer = speechCommands.create('BROWSER_FFT');
-        await recognizer.ensureModelLoaded();
-
-        recognizerRef.current = recognizer;
-        setIsModelLoaded(true);
-        console.log('Speech command model loaded');
-      } catch (error) {
-        console.error('Error loading speech command model:', error);
-      }
-    };
-
-    loadModel();
-  }, []);
+  
 
 
   return (
@@ -58,7 +36,5 @@ export const useModelContext = () => {
   }
   return context;
 };
-function setIsModelLoaded(arg0: boolean) {
-    throw new Error('Function not implemented.');
-}
+
 
