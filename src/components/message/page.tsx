@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BotIcon, UserIcon } from "@/components/icons";
 import { ReactNode } from "react";
 import { StreamableValue, useStreamableValue } from "ai/rsc";
-import { Markdown } from "@/components/markdown";
+import { BotIcon, UserIcon } from "../icons/page";
+ import { Markdown } from "../markdown/page";
 
 export const TextStreamMessage = ({
   content,
@@ -20,7 +20,7 @@ export const TextStreamMessage = ({
       animate={{ y: 0, opacity: 1 }}
     >
       <div className="w-[40px] h-[40px] flex items-center justify-center flex-shrink-0 bg-gray-200 rounded-full text-gray-500">
-        <BotIcon />
+       <BotIcon />
       </div>
 
       <div className="flex flex-col gap-1 max-w-4xl w-full">
