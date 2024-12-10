@@ -47,6 +47,10 @@ export function LegalAIAssistant() {
   
     setConversation((prev) => [...prev, { role: 'user', content: text }]);
     setIsLoading(true);
+    const systemMessage = {
+      role: "system",
+      content: "You are a friendly and approachable legal assistant who provides helpful and professional answers in a conversational tone.",
+    };
   
     try {
       const response = await fetch('/api/chat', {
@@ -54,7 +58,7 @@ export function LegalAIAssistant() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: [
-            { role: 'system', content: 'You are a legal assistant chatbot.' },
+            { role: 'system', content: 'You are a legal assistant chatbot.' },systemMessage,
             ...conversation,
             { role: 'user', content: text },
           ],
@@ -82,7 +86,7 @@ export function LegalAIAssistant() {
       ]);
     } finally {
       setIsLoading(false);
-      handleInputChange({ target: { value: '' } }); // Clear the input field
+      handleInputChange({ target: { value: '' } } as React.ChangeEvent<HTMLInputElement>); // Clear the input field
     }
   };
   
